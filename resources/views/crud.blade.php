@@ -45,7 +45,13 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('post_store') }}" method="POST">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <form action="{{ route('post_store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" name="title" id="title" class="form-control" placeholder="Enter blog title">

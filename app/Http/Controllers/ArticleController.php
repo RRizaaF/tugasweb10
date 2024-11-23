@@ -40,7 +40,7 @@ class ArticleController extends Controller
             'body' => $validatedData['body']
         ]);
 
-        return redirect()->route('post_store');
+        return redirect('/')->with('success', 'Article created successfully!');
     }
 
     /**

@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('crud');
 });
 
-Route::post('/crud', [ArticleController::class, 'store'])->name('post_store');
+Route::post('crud', [ArticleController::class, 'store'])->name('post_store');
