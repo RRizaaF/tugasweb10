@@ -12,7 +12,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        // $articles = Article::all(); // Ambil semua data artikel dari database
+        // return view('crud', compact('articles')); // Kirim data ke view
     }
 
     /**
@@ -31,24 +32,31 @@ class ArticleController extends Controller
         $validatedData = $request->validate([
             'title' => ['required'],
             'image' => ['required', 'image'],
-            'body' => ['required', 'min:20']
+            'body' => ['required', 'min:20'],
         ]);
 
+        // Simpan gambar ke storage
+        $imagePath = $request->file('image')->store('post/image', 'public');
+
+        // Simpan data ke database
         Article::create([
             'title' => $validatedData['title'],
-            'image' => $request->file('image')->store('post/image/','public'),
-            'body' => $validatedData['body']
+            'image' => $imagePath,
+            'body' => $validatedData['body'],
         ]);
 
-        return redirect()->route('post_store');
+        return redirect()->route('article.index')->with('success', 'Article successfully created!');
     }
+
+
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $articles = Article::all(); // Ambil semua data artikel dari database
+        return view('crud', compact('articles')); // Kirim data ke view
     }
 
     /**

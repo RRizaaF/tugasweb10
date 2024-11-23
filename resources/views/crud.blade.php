@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg bg-white sticky-top">
         <div class="container kontainer ms-4">
             <div class="d-flex align-items-center">
-                <img src="{{ asset('img/laravel.png') }}" style="height: 40px; width: 50px">
+                <img src="{{ asset('img/laravel.png') }}" style="height: 40px; width: 45px">
                 <p class="navbar-brand AZ ms-5">Dashboard</p>
             </div>
         </div>
@@ -43,30 +43,56 @@
 
     {{-- isi --}}
     <div class="container mt-5">
+        <!-- Form Input Data -->
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('post_store') }}" method="POST">
+                <form action="{{ route('post_store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" name="title" id="title" class="form-control" placeholder="Enter blog title">
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
                         <input type="file" name="image" id="image" class="form-control" style="padding-top: 10px">
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="body" class="form-label">Body</label>
                         <textarea name="body" id="body" rows="5" class="form-control" placeholder="Enter blog body"></textarea>
                     </div>
-
+    
                     <div class="text-end">
                         <button type="submit" class="btn btn-secondary">Save</button>
                     </div>
                 </form>
             </div>
         </div>
+        <!-- Tambahkan kode ini di sini untuk menampilkan daftar artikel -->
+        @if (session('success'))
+            <div class="alert alert-success mt-4">{{ session('success') }}</div>
+        @endif
+    
+        <div class="mt-4">
+            <h3>Articles</h3>
+            @if ($articles->isEmpty())
+                <p>No articles found.</p>
+            @else
+                <ul class="list-group">
+                    @foreach ($articles as $article)
+                        <li class="list-group-item">
+                            <h5>{{ $article->title }}</h5>
+                            <img src="{{ asset('storage/' . $article->image) }}" alt="Article Image" style="max-width: 200px;">
+                            <p>{{ $article->body }}</p>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+
+        </div>
     </div>
+    
+    
 
 </body>

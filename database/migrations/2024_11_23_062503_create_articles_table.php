@@ -12,6 +12,7 @@ class CreateArticlesTable extends Migration
     public function up(): void
     {
         Schema::create('articles', function (Blueprint $table) {
+            $table->id(); // Menambahkan kolom id sebagai primary key
             $table->string('title');
             $table->string('image');
             $table->text('body');
