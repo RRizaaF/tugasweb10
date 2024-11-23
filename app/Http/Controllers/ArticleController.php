@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -27,7 +28,19 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => ['required'],
+            'image' => ['required', 'image'],
+            'body' => ['required', 'min:20']
+        ]);
+
+        Article::create([
+            'title' => $validatedData['title'],
+            'image' => $request->file('image')->store('post/image/','public'),
+            'body' => $validatedData['body']
+        ]);
+
+        return redirect()->route('post_store');
     }
 
     /**
