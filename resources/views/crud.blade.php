@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg bg-white sticky-top">
         <div class="container kontainer ms-4">
             <div class="d-flex align-items-center">
-                <img src="{{ asset('img/laravel.png') }}" style="height: 40px; width: 50px">
+                <img src="{{ asset('img/laravel.png') }}" style="height: 40px; width: 45px">
                 <p class="navbar-brand AZ ms-5">Dashboard</p>
             </div>
         </div>
@@ -36,43 +36,9 @@
         </div>
     </nav>
 
-    {{-- header --}}
-    <header class="p-3">
-        <h3 class="ms-3">Create Post</h3>
-    </header>
-
-    {{-- isi --}}
     <div class="container mt-5">
-        <div class="card">
-            <div class="card-body">
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                <form action="{{ route('post_store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
-                        <input type="text" name="title" id="title" class="form-control" placeholder="Enter blog title">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Image</label>
-                        <input type="file" name="image" id="image" class="form-control" style="padding-top: 10px">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="body" class="form-label">Body</label>
-                        <textarea name="body" id="body" rows="5" class="form-control" placeholder="Enter blog body"></textarea>
-                    </div>
-
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-secondary">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <a href="/create">Buat article</a>
+        <a href="/show">Tampilkan Article</a>
+        @yield('content')
     </div>
-
 </body>

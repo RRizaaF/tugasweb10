@@ -10,15 +10,15 @@ class CreateArticlesTable extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::create('articles', function (Blueprint $table) {
-        $table->id(); // Tambahkan kolom ID
-        $table->string('title');
-        $table->string('image');
-        $table->text('body');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('articles', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('image');
+            $table->text('body');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
