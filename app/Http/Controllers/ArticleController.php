@@ -55,14 +55,13 @@ class ArticleController extends Controller
     }
 
     // Memperbarui artikel di database
-    public function update(Request $request, Article $article, $id)
+    public function update(Request $request, Article $article)
     {
         $validatedData = $request->validate([
             'title' => ['required'],
             'body' => ['required', 'min:5']
         ]);
 
-        $article = Article::find($id);
         $image = $article->image;
 
         if ($request->hasFile('image')) {
@@ -83,6 +82,6 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect('/show')->route('articles.index')->with('success', 'Article deleted successfully!');
+        return redirect()->route('articles.show')->with('success', 'Article deleted successfully!');
     }
 }

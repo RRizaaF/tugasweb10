@@ -12,7 +12,7 @@
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
-    line-height: 150%; 
+    line-height: 150%;
     padding-top: 18px;
 }
 
@@ -21,12 +21,12 @@
     height: 48px;
     border-radius: 8px;
 }
-  
+
 .search-input {
     padding-left: 50px;
     font-size: 18px;
 }
-  
+
 .search-icon {
     position: absolute;
     left: 15px;
@@ -38,5 +38,16 @@
 }
 
 header {
-    box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.05); 
+    box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.05);
 }
+
+.aksi a {
+    margin-left: 10px;
+    color: #6c5ce7;
+    text-decoration: none;
+    font-weight: bold;
+}
+.aksi a:hover {
+    color: #836aff;
+}
+

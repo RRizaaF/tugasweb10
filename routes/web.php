@@ -19,8 +19,8 @@ Route::post('/store', [ArticleController::class, 'store'])->name('articles.store
 Route::get('/show', [ArticleController::class, 'show'])->name('articles.show');
 
 // Menampilkan form edit artikel
-Route::get('/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+Route::get('/edit/{article}', [ArticleController::class, 'edit'])->name('articles.edit');
 
-Route::put('/update', [ArticleController::class, 'update'])->name('articles.update');
+Route::put('/update/{article}', [ArticleController::class, 'update'])->name('articles.update');
 
-Route::delete('/delete', [ArticleController::class, 'destroy'])->name('articles.delete');
+Route::delete('/delete/{article}', [ArticleController::class, 'destroy'])->name('articles.delete');

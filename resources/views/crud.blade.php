@@ -10,19 +10,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #0f0f1a">
     {{-- navbar --}}
-    <nav class="navbar navbar-expand-lg bg-white sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #1a1a2e">
         <div class="container kontainer ms-4">
             <div class="d-flex align-items-center">
-                <img src="{{ asset('img/laravel.png') }}" style="height: 40px; width: 45px">
-                <p class="navbar-brand AZ ms-5">Dashboard</p>
+                <img src="{{ asset('img/laravel-2.png') }}" style="height: 40px; width: 45px">
+                <p class="navbar-brand AZ ms-5" style="color: #ffffff">Dashboard</p>
             </div>
         </div>
         <div class="me-4">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff">
                     Kelompok1
                   </a>
                   <ul class="dropdown-menu">
@@ -36,7 +36,7 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
+    <div class="container aksi mt-5 mb-3">
         <a href="/create">Buat article</a>
         <a href="/show">Tampilkan Article</a>
         @yield('content')
