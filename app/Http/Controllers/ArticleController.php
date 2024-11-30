@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -54,25 +55,28 @@ class ArticleController extends Controller
     }
 
     // Memperbarui artikel di database
-    public function update(Request $request, Article $article)
-    { 
+    public function update(Request $request, Article $article, $id)
+    {
         $validatedData = $request->validate([
             'title' => ['required'],
-            'image' => ['nullable', 'image'],
-            'body' => ['required', 'min:20']
+            'body' => ['required', 'min:5']
         ]);
 
-        
+        $article = Article::find($id);
+        $image = $article->image;
+
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('post/images', 'public');
-            $article->image = $imagePath;
+            Storage::delete($image);
+            $image = $request->file('image')->store('post/images', 'public');
         }
 
-        $article->title = $validatedData['title'];
-        $article->body = $validatedData['body'];
-        $article->save();
-        
-        return redirect('/show');
+        $article->update([
+            'title' => $validatedData['title'],
+            'image' => $image,
+            'body' => $validatedData['body']
+        ]);
+
+        return redirect()->route('articles.show');
     }
 
     // Menghapus artikel dari database
