@@ -3,7 +3,7 @@
 @section('content')
     {{-- header --}}
     <header class="p-3">
-        <h3 style="color: #ffffff">Post</h3>
+        <h3 style="color: #ffffff">Create Post</h3>
     </header>
 
     {{-- isi --}}
